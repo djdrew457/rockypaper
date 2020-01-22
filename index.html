@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Rocky Horror Picture Show</title>
+</head>
+
+<script>
+let score = 0;
+
+function computerPlay(){
+    let comp = Math.floor(Math.random()*3);
+    res = "";
+    switch (comp){
+        case 0:
+            return "rock";
+            break;
+        case 1:
+            return "paper";
+            break;
+        case 2:
+            return "scissors";
+        default:
+            return "Error";
+    }
+}
+
+function playRound(playerSelection,computerSelection){
+    computerSelection = computerPlay()
+    playerSelection = playerPlay()
+
+    if(computerSelection == "rock" && playerSelection == "paper"){
+        console.log("You Win! " + playerSelection + " beats " + computerSelection);
+        score++;
+    }else if(computerSelection == "paper" && playerSelection == "scissors"){
+        console.log("You Win! " + playerSelection + " beats " + computerSelection);
+        score++;
+    }else if(computerSelection == "scissors" && playerSelection == "rock"){
+        console.log("You Win! " + playerSelection + " beats " + computerSelection);
+        score++;
+    }else if(computerSelection == playerSelection){
+        console.log("You Tied " + playerSelection + " ties " + computerSelection);
+
+    }else{
+        //computer wins
+        console.log("You Lose! " + computerSelection + " beats " + playerSelection);
+        score--;
+    }
+}
+
+function playerPlay(){
+    let str = window.prompt("Please enter Rock, Paper, or Scissors", "rock");
+        if (str.toLowerCase() == "rock" || str.toLowerCase() == "paper" || str.toLowerCase() == "scissors"){
+            return str
+        }else{
+            return "Please enter Rock Paper or Scissors"
+        }
+}
+function game(){
+var i;
+numberOfRounds = 5;
+for (i = 0; i <+ numberOfRounds; i++) {
+  playRound();
+}
+if(score == 0){
+    console.log("You Tied");
+}else if(score > 0){
+    console.log("You Won!");
+}else{
+    console.log("You Lost");
+}
+}
+
+game();
+
+</script>
+</html>
